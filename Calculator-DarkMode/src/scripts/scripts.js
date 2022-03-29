@@ -44,4 +44,47 @@ function keyboardInputHandler(e) {
   } else if (e.key === "/") {
     res.value += "/";
   }
-} 
+
+  //decimal key
+  if (e.key === ".") {
+    res.value += ".";
+  }
+
+  //press enter to see result
+  if (e.key === "Enter") {
+    res.value = eval(result.value || null);
+  }
+
+  //backspace for removing the last input
+  if (e.key === "Backspace") {
+    let resultInput = res.value;
+
+    //remove the last element in the string
+    res.value = resultInput.substring(0, res.value.length - 1);
+  }
+}
+
+// Clears the screen on click of C button.
+function clearScreen() {
+  document.getElementById("result").value = "";
+}
+// Displays entered value on screen.
+function liveScreen(value) {
+  let res = document.getElementById("result");
+  if (!res.value) {
+    res.value = "";
+  }
+  res.value += value;
+}
+// Swaps the stylesheet in order to  achieve dark mode.
+function changeTheme() {
+  let darkMode = document.getElementById("dark-mode");
+  let theme = document.getElementById("theme");
+  if (theme.getAttribute("href") === lightTheme) {
+    theme.href = darkTheme;
+    darkMode.innerHTML = "Light Mode 🌞";
+  } else {
+    theme.href = lightTheme;
+    darkMode.innerHTML = "Dark Mode 🌙";
+  }
+}
