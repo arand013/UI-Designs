@@ -14,7 +14,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(28, 231, 221);
+    background-color: rgb(115, 162, 201);
     transition: 0.8s all;
   }
   h1 {
@@ -96,4 +96,3 @@
     font-size: 1.1em;
     padding: 0 0.2em;
   }
-  
