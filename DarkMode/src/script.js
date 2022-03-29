@@ -33,3 +33,18 @@ modeswitch.addEventListener('click', function() {
         theme.setAttribute('href', 'style.css');
     }
 })
+
+modeswitch.addEventListener('click', function() {
+        // document.querySelector("link").setAttribute('href', "style2.css");
+        console.log("hey");
+        document.querySelector("link[href='style.css']").href = "style2.css";
+        isWhite = false
+    })
+modeswitch.addEventListener("click", function() {
+    // If the current URL contains "ligh-theme.css"
+    if (theme.getAttribute("href") == "style.css") {
+        theme.href = "style2.css";
+    } else {
+        theme.href = "style.css";
+    }
+});
