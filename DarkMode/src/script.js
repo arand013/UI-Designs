@@ -22,29 +22,14 @@ modeswitch.addEventListener('click', function() {
     }
 })
 
-// modeswitch.addEventListener('click', function() {
+modeswitch.addEventListener('click', function() {
 
-//     var theme = document.getElementById("#theme");
+    var theme = document.getElementById("#theme");
 
-//     if (isWhite == true) {
-//         theme.setAttribute('href', 'style2.css');
-//         isWhite = false;
-//     } else {
-//         theme.setAttribute('href', 'style.css');
-//     }
-// })
-
-// modeswitch.addEventListener('click', function() {
-//         // document.querySelector("link").setAttribute('href', "style2.css");
-//         console.log("hey");
-//         document.querySelector("link[href='style.css']").href = "style2.css";
-//         isWhite = false
-//     })
-// modeswitch.addEventListener("click", function() {
-//     // If the current URL contains "ligh-theme.css"
-//     if (theme.getAttribute("href") == "style.css") {
-//         theme.href = "style2.css";
-//     } else {
-//         theme.href = "style.css";
-//     }
-// });
+    if (isWhite == true) {
+        theme.setAttribute('href', 'style2.css');
+        isWhite = false;
+    } else {
+        theme.setAttribute('href', 'style.css');
+    }
+})
