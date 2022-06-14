@@ -1,21 +1,26 @@
 * {
     box-sizing: border-box;
   }
-  
-  body {
+
+body {
     margin: 0;
     font-family: Arial;
     background: #EBE7E7;
-  }
-  
-  .header {
+}
+
+.header {
     text-align: center;
     padding: 32px;
     background: #E0DDDD;
-  }
-  #gallery {
+}
+
+#gallery {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-  
+}
+
+#gallery img {
+    width: 25%;
+    height: 300px;
+}
