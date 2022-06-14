@@ -13,4 +13,9 @@
     padding: 32px;
     background: #E0DDDD;
   }
+  #gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   
