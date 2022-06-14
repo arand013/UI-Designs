@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial;
+    background: #EBE7E7;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 32px;
+    background: #E0DDDD;
+  }
+  
