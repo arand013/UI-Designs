@@ -18,7 +18,7 @@ span[class~="sr-only"] {
   
   body {
     font-family: sans-serif;
-    color: #0a0a23;
+    color: #2e2e45;
   }
   
   h1 {
@@ -44,7 +44,7 @@ span[class~="sr-only"] {
   section {
     max-width: 40rem;
     margin: 0 auto;
-    border: 2px solid #d0d0d5;
+    border: 2px solid #0f0f0f;
   }
   
   #years {
