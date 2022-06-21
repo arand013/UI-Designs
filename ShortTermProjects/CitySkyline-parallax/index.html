@@ -18,7 +18,306 @@
   <meta property="og:url" content="https://harryli0088.github.io/css-parallax-city-skyline/">
   <meta property="og:description" content="I made this parallax Tokyo city skyline with pure CSS and SVG">
 
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial;
+      letter-spacing: 1px;
+    }
+
+    #parallax {
+      perspective: 1px;
+      perspective-origin: 50% 10%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin-top: 0;
+      height: 100vh;
+      background: rgb(255,128,84);
+      background: linear-gradient(0deg, rgba(255,128,84,1) 60%, rgba(0,39,64,1) 100%);
+    }
+
+    #parallax .layer {
+      position: absolute;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    #sensoji {
+      transform: translateZ(0px) scale(1);
+    }
+    .sensoji_fill {
+      fill: #111115;
+    }
+
+    #tokyo_tower {
+      transform: translateZ(-0.25px) translateY(15%) scale(1.25);
+    }
+    .tokyo_tower_fill {
+      fill: #161B25;
+    }
+
+    #city {
+      transform: translateZ(-.5px) translateY(25%) scale(1.5);
+    }
+    .city_fill {
+      fill: #19202f;
+    }
+
+    #skytree {
+      transform: translateZ(-.75px) translateY(25%) scale(1.75);
+    }
+    .skytree_fill {
+      fill: #222032;
+    }
+
+    #hills {
+      transform: translateZ(-2.25px) translateY(35%) scale(3.25);
+    }
+    .hills_fill {
+      fill: #202a5c;
+    }
+
+    #cloud1 {
+      transform: translateZ(-2.5px) translateY(30%) scale(3.5);
+    }
+    .cloud1_fill {
+      fill: #4a4d82;
+    }
+
+    #fuji {
+      transform: translateZ(-3px) scale(4);
+    }
+    .fuji_fill {
+      fill: #5f5d99;
+    }
+
+    #cloud2 {
+      transform: translateZ(-3.5px) translateY(-25%) scale(4.5);
+    }
+    .cloud2_fill {
+      fill: #8a7d9e;
+    }
+
+    #sun {
+      transform: translateZ(-6px) scale(7);
+    }
+    .sun_fill {
+      fill: #ff7e00;
+    }
+
+    #landing {
+      position: relative;
+      background-color: #111115;
+      height: 100vh;
+      color: white;
+      margin-top: -4px;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    #chevron {
+      width: 2em;
+    }
+
+    a {
+      color: #5DADE2;
+    }
+    a:visited {
+      color: #BB8FCE;
+    }
+
+    #explanation {
+      background: #fff;
+      height: max(100vh,70vw);
+      padding: 1em;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .code {
+      font-family: monospace;
+      background: #eee;
+      padding: 0.25em;
+      border-radius: 5px;
+    }
+
+    #explanation_layers_container {
+      position: relative;
+      width: 50vw;
+      height: 37.5vw;
+      margin-bottom: 2em;
+    }
+    .explanation_layer {
+      position: absolute;
+      width: 50vw;
+      z-index: 0;
+    }
+
+
+
+
+    :root {
+      --animation-time: 10s;
+    }
+
+    #sun_explanation {
+      animation: sun_explanation var(--animation-time) infinite;
+    }
+    @keyframes sun_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(-8 * min(1vw,1vh)),calc(-8 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,0); }
+      100% { transform: translate(0%); }
+    }
+    #sun_explanation svg {
+      transform: translateY(-25%);
+    }
+
+    #cloud2_explanation {
+      animation: cloud2_explanation var(--animation-time) infinite;
+    }
+    @keyframes cloud2_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(-6 * min(1vw,1vh)),calc(-6 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-5%); }
+      100% { transform: translate(0%); }
+    }
+    #cloud2_explanation svg {
+      transform: translateY(-30%);
+    }
+
+    #fuji_explanation {
+      animation: fuji_explanation var(--animation-time) infinite;
+    }
+    @keyframes fuji_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(-4 * min(1vw,1vh)),calc(-4 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-10%); }
+      100% { transform: translate(0%); }
+    }
+    #fuji_explanation svg {
+      transform: translateY(-25%);
+    }
+
+    #cloud1_explanation {
+      animation: cloud1_explanation var(--animation-time) infinite;
+    }
+    @keyframes cloud1_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(-2 * min(1vw,1vh)),calc(-2 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-15%); }
+      100% { transform: translate(0%); }
+    }
+    #cloud1_explanation svg {
+      transform: translateY(-15%);
+    }
+
+    #hills_explanation {
+      animation: hills_explanation var(--animation-time) infinite;
+    }
+    @keyframes hills_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(0,0); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-20%); }
+      100% { transform: translate(0%); }
+    }
+    #hills_explanation svg {
+      transform: translateY(-10%);
+    }
+
+    #skytree_explanation {
+      animation: skytree_explanation var(--animation-time) infinite;
+    }
+    @keyframes skytree_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(2 * min(1vw,1vh)),calc(2 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-25%); }
+      100% { transform: translate(0%); }
+    }
+
+    #city_explanation {
+      animation: city_explanation var(--animation-time) infinite;
+    }
+    @keyframes city_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(4 * min(1vw,1vh)),calc(4 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-30%); }
+      100% { transform: translate(0%); }
+    }
+
+    #tokyo_tower_explanation {
+      animation: tokyo_tower_explanation var(--animation-time) infinite;
+    }
+    @keyframes tokyo_tower_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(6 * min(1vw,1vh)),calc(6 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-35%); }
+      100% { transform: translate(0%); }
+    }
+
+    #sensoji_explanation {
+      animation: sensoji_explanation var(--animation-time) infinite;
+    }
+    @keyframes sensoji_explanation {
+      0% { transform: translate(0%); }
+      25% { transform: translate(calc(8 * min(1vw,1vh)),calc(8 * min(1vw,1vh))); }
+      50% { transform: translate(0%); }
+      75% { transform: translate(0,-40%); }
+      100% { transform: translate(0%); }
+    }
+
+    #fake_scrollbar_container {
+      animation: fake_scrollbar_container var(--animation-time) infinite;
+      height: 100%;
+      width: min(5%,1em);
+      background-color: #eee;
+      position: absolute;
+      left: 100%;
+    }
+    @keyframes fake_scrollbar_container {
+      0% { opacity: 1; }
+      25% { opacity: 0; }
+      50% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    #fake_scrollbar {
+      animation: fake_scrollbar var(--animation-time) infinite;
+      height: 15%;
+      width: 100%;
+      background-color: gray;
+      position: absolute;
+    }
+    @keyframes fake_scrollbar {
+      0% { top: 0; transform: translateY(0); }
+      25% { top: 0; transform: translateY(0); }
+      50% { top: 0; transform: translateY(0); }
+      75% { top: 100%; transform: translateY(-100%); }
+      100% { top: 0; transform: translateY(0); }
+    }
+  </style>
+
+
+
 </head>
+
 <body>
   <div id="parallax">
     <div id="sun" class="sun_fill layer">
